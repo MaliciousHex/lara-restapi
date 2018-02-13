@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Quote} from "../quote.interface";
 import {QuoteService} from "../quote.service";
 import {Response} from "@angular/http";
@@ -20,8 +20,8 @@ export class QuotesComponent implements OnInit {
   onGetQuotes(){
     this.quoteService.getQuotes()
         .subscribe(
-            (quotes:Quote[]) => this.quotes = quotes,
-            (error:Response) => console.log(error)
+            (quotes: Quote[]) => this.quotes = quotes,
+            (error: Response) => console.log(error)
 
         )
   }
