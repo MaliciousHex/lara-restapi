@@ -11,6 +11,9 @@ import { QuoteService } from "../quote.service";
 })
 export class QuotesComponent implements OnInit {
     quotes: Quote[];
+    editing = false;
+    edit = '';
+
 
     constructor(private quoteService: QuoteService) { }
 
@@ -23,6 +26,17 @@ export class QuotesComponent implements OnInit {
                 (quotes: Quote[]) => this.quotes = quotes,
                 (error: Response) => console.log(error)
             );
+    }
+
+    onDeleted(quote: Quote){
+        const position = this.quotes.findIndex(
+            (quoteEl:Quote) =>{
+                return quoteEl.id == quote.id;
+
+            }
+        );
+        this.quotes.splice(position,1);
+
     }
 
 }
